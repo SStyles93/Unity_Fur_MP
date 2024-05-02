@@ -27,6 +27,22 @@ Material:
         m_Texture: {fileID: 2800000, guid: 3f03054d452a62a46b13b6eb83a04a33, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailNoiseTextureA:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNoiseTextureB:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailTextureA:
+        m_Texture: {fileID: 2800000, guid: 3f03054d452a62a46b13b6eb83a04a33, type: 3}
+        m_Scale: {x: 0.5, y: 0.5}
+        m_Offset: {x: 0, y: 0}
+    - _DetailTextureB:
+        m_Texture: {fileID: 2800000, guid: c30167919a84e8e4f8f96989f5d0c3a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SmoothNoiseTexture:
         m_Texture: {fileID: 2800000, guid: c30167919a84e8e4f8f96989f5d0c3a0, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -39,15 +55,19 @@ Material:
     m_Floats:
     - _Curvature: 0
     - _DetailDepthScale: 1
+    - _DetailTextureInfluenceA: 1
+    - _DetailTextureInfluenceB: 1
     - _DisplacementStrength: 0.99
     - _ShellLenght: 5.09
-    - _ShellSize: 0.188
+    - _ShellSize: 0.235
     - _SmoothDepthScale: 0
+    - _TextureInfluenceA: 1
+    - _TextureInfluenceB: 0
     - _TotalHeight: 0.04
     - _WindAmplitude: 0
     - _WindTimeMult: 0
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShellDirection: {r: 0, g: 0, b: 0, a: 0}
+    - _ShellDirection: {r: 0, g: 1, b: 0, a: 0}
     - _TopColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

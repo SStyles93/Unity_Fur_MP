@@ -35,16 +35,14 @@ struct GeometryOutput {
 float4 _BaseColor;
 float4 _TopColor;
 float _TotalHeight; // Height of the top layer
+
 // These two textures are combined to create the fur pattern in the fragment function
-TEXTURE2D(_DetailNoiseTexture); SAMPLER(sampler_DetailNoiseTexture); float4 _DetailNoiseTexture_ST;
-float _DetailDepthScale;
-TEXTURE2D(_SmoothNoiseTexture); SAMPLER(sampler_SmoothNoiseTexture); float4 _SmoothNoiseTexture_ST;
-float _SmoothDepthScale;
-// Wind properties
-//TEXTURE2D(_WindNoiseTexture); SAMPLER(sampler_WindNoiseTexture); float4 _WindNoiseTexture_ST;
-//float _WindTimeMult;
-//float _WindAmplitude;
-//Movement properties
+TEXTURE2D(_DetailTextureA); SAMPLER(sampler_DetailTextureA); float4 _DetailTextureA_ST;
+float _TextureInfluenceA;
+TEXTURE2D(_DetailTextureB); SAMPLER(sampler_DetailTextureB); float4 _DetailTextureB_ST;
+float _TextureInfluenceB;
+
+//Values used to change "transform" of the Shells
 float _ShellSize;
 float4 _ShellDirection;
 float _Curvature;
@@ -136,14 +134,14 @@ half4 Fragment(GeometryOutput input) : SV_Target {
     
 
     // Sample the two noise textures, applying their scale and offset
-    float detailNoise = SAMPLE_TEXTURE2D(_DetailNoiseTexture, sampler_DetailNoiseTexture, TRANSFORM_TEX(uv, _DetailNoiseTexture)).r;
-    float smoothNoise = SAMPLE_TEXTURE2D(_SmoothNoiseTexture, sampler_SmoothNoiseTexture, TRANSFORM_TEX(uv, _SmoothNoiseTexture)).r;
+    float detailNoiseA = SAMPLE_TEXTURE2D(_DetailTextureA, sampler_DetailTextureA, TRANSFORM_TEX(uv, _DetailTextureA)).r;
+    float detailNoiseB = SAMPLE_TEXTURE2D(_DetailTextureB, sampler_DetailTextureB, TRANSFORM_TEX(uv, _DetailTextureB)).r;
     // Combine the textures together using these scale variables. Lower values will reduce a texture's influence
-    detailNoise = 1 - (1 - detailNoise) * _DetailDepthScale;
-    smoothNoise = 1 - (1 - smoothNoise) * _SmoothDepthScale;
+    detailNoiseA = 1 - (1 - detailNoiseA) * _TextureInfluenceA;
+    detailNoiseB = 1 - (1 - detailNoiseB) * _TextureInfluenceB;
     // If detailNoise * smoothNoise is less than height, this pixel will be discarded by the renderer
     // I.E. this pixel will not render. The fragment function returns as well
-    clip(detailNoise * smoothNoise - height);
+    clip(detailNoiseA * detailNoiseB - height);
 
     // If the code reaches this far, this pixel should render
 
