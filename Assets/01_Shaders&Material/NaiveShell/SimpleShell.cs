@@ -19,7 +19,7 @@ public class SimpleShell : MonoBehaviour {
     [Range(0.0f, 1.0f)] public float noiseMin = 0.0f;
     [Range(0.0f, 1.0f)] public float noiseMax = 1.0f;
     [Range(0.0f, 10.0f)] public float thickness = 1.0f;
-    [Range(1.0f, 10.0f)] public float curvature = 1.0f;
+    [Range(0.0f, 1.0f)] public float curvature = 1.0f;
     [Range(0.0f, 1.0f)] public float displacementStrength = 0.1f;
     [Range(0.0f, 5.0f)] public float occlusionAttenuation = 1.0f;
     [Range(0.0f, 1.0f)] public float occlusionBias = 0.0f;
@@ -28,9 +28,8 @@ public class SimpleShell : MonoBehaviour {
     private Material shellMaterial;
     private GameObject[] shells;
 
-    private Vector3 displacementDirection = new Vector3(0, 0, 0);
-
     public Vector3 direction = new Vector3(0, 0, 0);
+    private Vector3 displacementDirection = new Vector3(0, 0, 0);
 
     void OnEnable() {
         shellMaterial = new Material(shellShader);
@@ -67,7 +66,6 @@ public class SimpleShell : MonoBehaviour {
 
     void Update() {
         float velocity = 1.0f;
-
         Vector3 currentPosition = this.transform.position;
         direction.Normalize();
         currentPosition += direction * velocity * Time.deltaTime;
@@ -78,8 +76,6 @@ public class SimpleShell : MonoBehaviour {
             displacementDirection.y -= 10.0f * Time.deltaTime;
 
         if (displacementDirection.magnitude > 1) displacementDirection.Normalize();
-
-        Shader.SetGlobalVector("_ShellDirection", displacementDirection);
 
         if (updateStatics) {
             for (int i = 0; i < shellCount; ++i) {
@@ -96,6 +92,7 @@ public class SimpleShell : MonoBehaviour {
                 shells[i].GetComponent<MeshRenderer>().material.SetFloat("_NoiseMin", noiseMin);
                 shells[i].GetComponent<MeshRenderer>().material.SetFloat("_NoiseMax", noiseMax);
                 shells[i].GetComponent<MeshRenderer>().material.SetVector("_ShellColor", shellColor);
+                shells[i].GetComponent<MeshRenderer>().material.SetVector("_ShellDirection", displacementDirection);
             }
         }
     }

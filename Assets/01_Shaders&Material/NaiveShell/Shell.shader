@@ -80,7 +80,7 @@ Shader "Custom/Water" {
 
 				float shellHeight = (float)_ShellIndex / (float)_ShellCount;
 				
-				shellHeight = pow(shellHeight, _ShellDistanceAttenuation);
+				shellHeight = abs(pow(shellHeight, _ShellDistanceAttenuation));
 
 				IN.vertex.xyz += IN.normal.xyz * _ShellLength * shellHeight;
 

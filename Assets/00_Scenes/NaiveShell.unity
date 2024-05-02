@@ -588,11 +588,12 @@ MonoBehaviour:
   noiseMin: 0
   noiseMax: 0.811
   thickness: 1.01
-  curvature: 1.6
+  curvature: 1
   displacementStrength: 0.304
   occlusionAttenuation: 0.27
   occlusionBias: 1
   shellColor: {r: 0.7396226, g: 0.31761402, b: 0, a: 1}
+  displacementDirection: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
 --- !u!23 &1631154129
 MeshRenderer:
@@ -736,6 +737,7 @@ MonoBehaviour:
   occlusionAttenuation: 0.97
   occlusionBias: 0.207
   shellColor: {r: 0.0012673897, g: 0.335849, b: 0.107661575, a: 0}
+  displacementDirection: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
 --- !u!23 &1820599335
 MeshRenderer:

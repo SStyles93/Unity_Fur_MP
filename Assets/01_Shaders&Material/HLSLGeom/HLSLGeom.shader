@@ -1,19 +1,17 @@
 Shader "Custom/HLSLGeom" {
     Properties {
+        _ShellSize("Shell Size", range(0.01, 1.0)) = 1.0
+        
+        _DisplacementStrength("Displacement Strenght", range(0.0, 0.99)) = 0.5
+        _ShellDirection("Shell Direction", vector) = (0, 0, 0, 0)
+        //_Curvature("Curvature", float) = 1
+        
         _BaseColor("Base color", Color) = (0, 0.5, 0, 1) // Color of the lowest layer
         _TopColor("Top color", Color) = (0, 1, 0, 1) // Color of the highest layer
-        _TotalHeight("Grass height", Float) = 1 // Height of the highest layer
         _DetailNoiseTexture("Grainy noise", 2D) = "white" {} // Texture A used to clip layers
         _DetailDepthScale("Grainy depth scale", Range(0, 1)) = 1 // The influence of Texture A
         _SmoothNoiseTexture("Smooth noise", 2D) = "white" {} // Texture B used to clip layers
         _SmoothDepthScale("Smooth depth scale", Range(0, 1)) = 1 // The influence of Texture B
-        //_WindNoiseTexture("Wind noise texture", 2D) = "white" {} // A wind noise texture
-        //_WindTimeMult("Wind frequency", Float) = 1 // Wind noise offset by time
-        //_WindAmplitude("Wind strength", Float) = 1 // The largest UV offset of wind
-
-        _ShellLenght("Shell Lenght", float) = 1
-        _Curvature("Curvature", float) = 1
-        _DisplacementStrength("Displacement Strenght", float) = 1
     }
 
     SubShader {

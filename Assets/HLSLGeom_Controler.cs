@@ -9,9 +9,12 @@ public class HLSLGeom_Controler : MonoBehaviour
 
     public Vector3 direction = new Vector3(0, 0, 0);
 
+    public Material shellMaterial;
+
     // Start is called before the first frame update
     void Start()
     {
+        shellMaterial = GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -30,7 +33,7 @@ public class HLSLGeom_Controler : MonoBehaviour
 
         if (displacementDirection.magnitude > 1) displacementDirection.Normalize();
 
-        Shader.SetGlobalVector("_ShellDirection", displacementDirection);
+        shellMaterial.SetVector("_ShellDirection", displacementDirection);
     }
 
     public void OnMove(InputValue value)

@@ -45,8 +45,8 @@ float _SmoothDepthScale;
 //float _WindTimeMult;
 //float _WindAmplitude;
 //Movement properties
-float _ShellLenght;
-float3 _ShellDirection;
+float _ShellSize;
+float4 _ShellDirection;
 float _Curvature;
 float _DisplacementStrength;
 
@@ -72,9 +72,13 @@ VertexOutput Vertex(Attributes IN) {
 void SetupVertex(in VertexOutput input, inout GeometryOutput output, float height) {
 
     // Extrude the position outwards along the normal based on the passed in height
-    float3 positionWS = input.positionWS + input.normalWS * (height * _TotalHeight * _ShellLenght);
-
+    float3 positionWS = input.positionWS + input.normalWS * (height * _ShellSize);
+    
+    //Move shell positions according to the _ShellDirection higher layers are more impacted by the height
+    positionWS -= _ShellDirection * (height * _ShellSize * _DisplacementStrength);
+    
     output.positionWS = positionWS;
+
     output.normalWS = input.normalWS;
     output.uv = float3(input.uv, height); // Store the layer height in uv.z
     output.positionCS = CalculatePositionCSWithShadowCasterLogic(positionWS, input.normalWS);
@@ -85,11 +89,12 @@ void SetupVertex(in VertexOutput input, inout GeometryOutput output, float heigh
 void Geometry(triangle VertexOutput inputs[3], inout TriangleStream<GeometryOutput> outputStream) {
     // Initialize the output struct
     GeometryOutput output = (GeometryOutput)0;
-
+    
+    //For each layer
     for (int l = 0; l < FUR_LAYERS; l++) {
-        // Calculate the height percent
+        // The height percent
         float h = l / (float)(FUR_LAYERS - 1);
-        // For each point in the triangle...
+        // For each point in the triangle
         for (int t = 0; t < 3; t++) {
             // Calculate the output data and add the vertex to the output stream
             SetupVertex(inputs[t], output, h);
@@ -104,6 +109,7 @@ void Geometry(triangle VertexOutput inputs[3], inout TriangleStream<GeometryOutp
 
 half4 Fragment(GeometryOutput input) : SV_Target {
 
+    float2 uv = input.uv.xy;
     // Height percent is uv.z
     float height = input.uv.z;
 
@@ -115,9 +121,20 @@ half4 Fragment(GeometryOutput input) : SV_Target {
     //// Offset the grass UV by the wind. Higher layers are affected more
     //float2 uv = input.uv.xy + windNoise * (_WindAmplitude * height);
     
-    float2 uv = input.uv.xy;
-    uv.y += (_ShellDirection.y * _Curvature * height);
-    uv.x += (_ShellDirection.x * _Curvature * height);
+    //float k = pow(_Curvature, height);
+    //uv.x += _ShellDirection.x * (k * _DisplacementStrength);
+    //uv.y += _ShellDirection.y * (k * _DisplacementStrength);
+
+    //// Offset the grass UV by the _ShellDirection. Higher layers are affected more
+    //float2 uv = input.uv.xy;
+    //uv.y += (_ShellDirection.y * (_Curvature/10 * height));
+    //uv.x += (_ShellDirection.x * (_Curvature/10 * height));
+
+    //float2 uv = input.uv.xy;
+    //uv.y += _ShellDirection.y * (_Curvature/10 * height);
+    //uv.x += _ShellDirection.x * (_Curvature/10 * height);
+    
+
     // Sample the two noise textures, applying their scale and offset
     float detailNoise = SAMPLE_TEXTURE2D(_DetailNoiseTexture, sampler_DetailNoiseTexture, TRANSFORM_TEX(uv, _DetailNoiseTexture)).r;
     float smoothNoise = SAMPLE_TEXTURE2D(_SmoothNoiseTexture, sampler_SmoothNoiseTexture, TRANSFORM_TEX(uv, _SmoothNoiseTexture)).r;
