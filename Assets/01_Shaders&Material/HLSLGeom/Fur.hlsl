@@ -32,21 +32,20 @@ struct GeometryOutput {
 };
 
 // Properties
+//Values used to change "transform" of the Shells
+float _ShellSize;
+float4 _ShellDirection;
+float _DisplacementStrength;
+float _Curvature;
+
+//Color properties
 float4 _BaseColor;
 float4 _TopColor;
-float _TotalHeight; // Height of the top layer
-
 // These two textures are combined to create the fur pattern in the fragment function
 TEXTURE2D(_DetailTextureA); SAMPLER(sampler_DetailTextureA); float4 _DetailTextureA_ST;
 float _TextureInfluenceA;
 TEXTURE2D(_DetailTextureB); SAMPLER(sampler_DetailTextureB); float4 _DetailTextureB_ST;
 float _TextureInfluenceB;
-
-//Values used to change "transform" of the Shells
-float _ShellSize;
-float4 _ShellDirection;
-float _Curvature;
-float _DisplacementStrength;
 
 // Vertex functions
 VertexOutput Vertex(Attributes IN) {

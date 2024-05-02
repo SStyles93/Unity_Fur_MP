@@ -1,9 +1,8 @@
 Shader "Custom/HLSLGeom" {
     Properties {
         _ShellSize("Shell Size", range(0.01, 1.0)) = 1.0
-        
-        _DisplacementStrength("Displacement Strenght", range(0.0, 0.99)) = 0.5
         _ShellDirection("Shell Direction", vector) = (0, 0, 0, 0)
+        _DisplacementStrength("Displacement Strenght", range(0.0, 0.99)) = 0.5
         //_Curvature("Curvature", float) = 1
         
         _BaseColor("Base color", Color) = (0, 0.5, 0, 1) // Color of the lowest layer
