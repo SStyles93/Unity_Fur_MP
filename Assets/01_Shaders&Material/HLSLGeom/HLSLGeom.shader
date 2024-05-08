@@ -7,10 +7,10 @@ Shader "Custom/HLSLGeom" {
         
         _BaseColor("Base color", Color) = (0, 0.5, 0, 1) // Color of the lowest layer
         _TopColor("Top color", Color) = (0, 1, 0, 1) // Color of the highest layer
-        _DetailTextureA("Grainy noise", 2D) = "white" {} // Texture A used to clip layers
-        _TextureInfluenceA("Grainy depth scale", Range(0, 1)) = 1 // The influence of Texture A
-        _DetailTextureB("Smooth noise", 2D) = "white" {} // Texture B used to clip layers
-        _TextureInfluenceB("Smooth depth scale", Range(0, 1)) = 1 // The influence of Texture B
+        _DetailTextureA("Detail Texture A", 2D) = "white" {} // Texture A used to clip layers
+        _TextureInfluenceA("Texture A Influence", Range(0, 1)) = 1 // The influence of Texture A
+        _DetailTextureB("Detail Texture B", 2D) = "white" {} // Texture B used to clip layers
+        _TextureInfluenceB("Texture B Influence", Range(0, 1)) = 1 // The influence of Texture B
     }
 
     SubShader {

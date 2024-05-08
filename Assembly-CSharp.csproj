@@ -66,11 +66,39 @@
     <Compile Include="Assets\01_Shaders&amp;Material\NaiveShell\SimpleCameraController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\Lit.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Shell\CommonShell.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\LitTessellation.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Unlit.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\Unlit.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLGeom\Fur.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\TESTSHADERS\HLSLTESTSHADER.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\UnlitTessellation.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Common.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\Shadow.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\TESTSHADERS\TEST.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\LitMultiMat.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Shell\ShellMultiMat.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\Param.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Shell\CommonShell.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Lit.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\UnlitMultiMat.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Unlit.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\TESTSHADERS\CommonTEST.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\LitTessellation.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\NaiveShell\Shell_Original.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Shell\Fur.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLGeom\HLSLGeom.shader" />
     <None Include="Assets\01_Shaders&amp;Material\NaiveShell\Shell.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Shell\Fur.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\Common.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\UnlitTessellation.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLGeom\Common.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\HLSLMix.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Shadow.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Lit.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Shell\HLSLGeom1.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Param.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
