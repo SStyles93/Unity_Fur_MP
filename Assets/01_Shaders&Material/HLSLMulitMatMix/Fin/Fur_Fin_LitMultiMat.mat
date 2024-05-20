@@ -25,41 +25,41 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 59ad38410381d2b46bd890f655409d96, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FurMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ee34a50f66f625840bd3351081ea330d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 16401646607fe05498e2fa14e6745ffb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaCutout: 0
-    - _Density: 0.1
+    - _AlphaCutout: 0.201
+    - _Density: 10
     - _DrawOrigPolygon: 1
-    - _FaceNormalFactor: 0.425
-    - _FaceViewProdThresh: 0.6
-    - _FinJointNum: 5
-    - _FinLength: 0.1
-    - _Metallic: 0.5
-    - _NormalScale: 0
-    - _Occlusion: 0.812
-    - _RandomDirection: 0
+    - _FaceNormalFactor: 0.283
+    - _FaceViewProdThresh: 0.475
+    - _FinJointNum: 8
+    - _FinLength: 0.081
+    - _Metallic: 0
+    - _NormalScale: 2
+    - _Occlusion: 0
+    - _RandomDirection: 0.737
     - _RimLightIntensity: 0
     - _RimLightPower: 1
     - _ShadowExtraBias: 0
     - _Smoothness: 0
-    - _TessFactor: 10
+    - _TessFactor: 1
     - _TessMaxDist: 50
     - _TessMinDist: 0.1
     m_Colors:
-    - _AmbientColor: {r: 0, g: 0, b: 0, a: 1}
-    - _BaseColor: {r: 1, g: 0, b: 0.009968281, a: 1}
+    - _AmbientColor: {r: 0, g: 0.4528302, b: 0.00034224312, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
     - _BaseMove: {r: 0, g: -0, b: 0, a: 3}
-    - _WindFreq: {r: 0.5, g: 0.7, b: 0.9, a: 1}
-    - _WindMove: {r: 0.2, g: 0.3, b: 0.2, a: 1}
+    - _WindFreq: {r: 0, g: 0, b: 0, a: 1}
+    - _WindMove: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

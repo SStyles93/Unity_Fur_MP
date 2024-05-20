@@ -47,15 +47,27 @@ Material:
     m_Floats:
     - _DetailDepthScale: 0
     - _DisplacementStrength: 0.99
-    - _ShellSize: 0.323
+    - _FurLayers: 71
+    - _ShellSize: 0.509
     - _SmoothDepthScale: 1
     - _TextureInfluenceA: 1
-    - _TextureInfluenceB: 1
+    - _TextureInfluenceB: 0.921
     - _TotalHeight: 0.25
     - _WindAmplitude: 0.001
     - _WindTimeMult: 0.001
+    - _alpha: 0
+    - _emission: 0
+    - _furLayers: 24
+    - _metallic: 0
+    - _normalTS: 0
+    - _occlusion: 0
+    - _smoothness: 0.224
+    - _specular: 0
     m_Colors:
     - _BaseColor: {r: 0, g: 0.40754712, b: 0.010176182, a: 1}
     - _ShellDirection: {r: 0, g: 0, b: 0, a: 0}
     - _TopColor: {r: 0, g: 1, b: 0.16811562, a: 1}
+    - _emission: {r: 0, g: 0, b: 0, a: 0}
+    - _normalTS: {r: 0, g: 0, b: 0, a: 0}
+    - _specular: {r: 2.7, g: 0.84, b: 1.7, a: 0.7}
   m_BuildTextureStacks: []

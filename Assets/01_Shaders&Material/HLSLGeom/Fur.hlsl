@@ -47,6 +47,21 @@ float _TextureInfluenceA;
 TEXTURE2D(_DetailTextureB); SAMPLER(sampler_DetailTextureB); float4 _DetailTextureB_ST;
 float _TextureInfluenceB;
 
+//float4 _specular;
+//float _smoothness; 
+//float3 _emission; 
+//float _alpha;
+//float3 _normalTS;
+
+half _metallic;
+half3 _specular;
+half _smoothness; 
+half _occlusion;
+half3 _emission; 
+half _alpha;
+
+uint _FurLayers;
+
 // Vertex functions
 VertexOutput Vertex(Attributes IN) {
     // Initialize the output struct
@@ -88,9 +103,9 @@ void Geometry(triangle VertexOutput inputs[3], inout TriangleStream<GeometryOutp
     GeometryOutput output = (GeometryOutput)0;
     
     //For each layer
-    for (int l = 0; l < FUR_LAYERS; l++) {
+    for (int l = 0; l < _FurLayers; l++) {
         // The height percent
-        float h = l / (float)(FUR_LAYERS - 1);
+        float h = l / (float)(_FurLayers - 1);
         // For each point in the triangle
         for (int t = 0; t < 3; t++) {
             // Calculate the output data and add the vertex to the output stream
@@ -156,10 +171,34 @@ half4 Fragment(GeometryOutput input) : SV_Target {
     lightingInput.shadowCoord = CalculateShadowCoord(input.positionWS, input.positionCS); // Calculate the shadow map coord
 
     // Lerp between the two grass colors based on layer height
-    float3 albedo = lerp(_BaseColor, _TopColor, height).rgb;
+    float3 _diffuseColor = lerp(_BaseColor, _TopColor, height).rgb;
 
-    // The URP simple lit algorithm
-    return UniversalFragmentBlinnPhong(lightingInput, albedo, 1, 0, 0, 1, 1);
+    // The URP simple lit algorithm, 
+    //InputData, 
+    //half3 diffuse, 
+    //half4 specular, 
+    //float smoothness, 
+    //half3 emission, 
+    //float alpha, 
+    //half3 normalTS
+    //return UniversalFragmentBlinnPhong(lightingInput, _diffuseColor, _specular, _smoothness, _emission, _alpha, _normalTS);
+    
+    //return UniversalFragmentBlinnPhong(lightingInput, _diffuseColor, 1,1,1,1,1);
+    //return UniversalFragmentBlinnPhong(lightingInput, _diffuseColor, 1,1,0,0,1);
+    
+    //InputData inputData, 
+    //half3 albedo, 
+    //half metallic, 
+    //half3 specular,
+    //half smoothness, 
+    //half occlusion, 
+    //half3 emission, 
+    //half alpha
+    //return UniversalFragmentPBR(lightingInput, _diffuseColor, _metallic, _specular, _smoothness, _occlusion, _emission, _alpha);
+    return UniversalFragmentPBR(lightingInput, _diffuseColor, _metallic, _specular, _smoothness, _occlusion, _emission, 1);
+    
+    //return UniversalFragmentPBR(lightingInput, _diffuseColor, 0, 1, 1, 1, 0, 1);
+    
 #endif
 }
 

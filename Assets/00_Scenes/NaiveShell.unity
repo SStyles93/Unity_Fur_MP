@@ -458,7 +458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &923096278
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -593,7 +593,6 @@ MonoBehaviour:
   occlusionAttenuation: 0.27
   occlusionBias: 1
   shellColor: {r: 0.7396226, g: 0.31761402, b: 0, a: 1}
-  displacementDirection: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
 --- !u!23 &1631154129
 MeshRenderer:
@@ -709,7 +708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1820599334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,12 +731,11 @@ MonoBehaviour:
   noiseMin: 0.415
   noiseMax: 1
   thickness: 1.18
-  curvature: 2.85
+  curvature: 1
   displacementStrength: 0.01
   occlusionAttenuation: 0.97
   occlusionBias: 0.207
   shellColor: {r: 0.0012673897, g: 0.335849, b: 0.107661575, a: 0}
-  displacementDirection: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
 --- !u!23 &1820599335
 MeshRenderer:
