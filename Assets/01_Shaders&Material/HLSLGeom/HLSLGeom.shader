@@ -1,8 +1,8 @@
-Shader "Custom/HLSLGeom" {
+﻿Shader "Custom/HLSLGeom" {
     Properties {
         
         [Header(Shell Property)][Space]
-        [IntRange] _FurLayers("NumberOfShells", Range(1, 256)) = 24
+        [IntRange] _FurLayers("NumberOfShells", Range(2, 24)) = 24
         _ShellSize("Shell Size", range(0.01, 1.0)) = 1.0
         _ShellDirection("Shell Direction", vector) = (0, 0, 0, 0)
         _DisplacementStrength("Displacement Strenght", range(0.0, 0.99)) = 0.5
@@ -22,6 +22,10 @@ Shader "Custom/HLSLGeom" {
         _metallic("Metalness", Range(0, 1)) = 0
         _emission("Emissive", Color) = (0, 0, 0, 0)
 
+        [Space]
+        _Tess("Tessellation", Range(0, 64)) = 0
+        _MaxTessDistance("Max Tessellation Distance", float) = 10
+
         //_specular("Specular", vector) = (0, 0, 0, 0)
         //_alpha("alpha", float) = 0
         //_normalTS("normalTS", vector) = (0, 0, 0, 0)
@@ -33,6 +37,8 @@ Shader "Custom/HLSLGeom" {
     }
 
     SubShader {
+
+        
         // UniversalPipeline needed to have this render in URP
         Tags{"RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "IgnoreProjector" = "True"}
 
@@ -61,7 +67,7 @@ Shader "Custom/HLSLGeom" {
             #pragma vertex Vertex
             #pragma geometry Geometry
             #pragma fragment Fragment
-
+			
             // Incude our logic file
             #include "Fur.hlsl"    
 

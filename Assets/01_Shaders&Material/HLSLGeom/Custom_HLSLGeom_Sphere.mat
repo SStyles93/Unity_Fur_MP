@@ -36,8 +36,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailTextureA:
-        m_Texture: {fileID: 2800000, guid: ed767f0e0705def4b8532aadd57428fb, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Texture: {fileID: 2800000, guid: 099a872d7ccf30141bb4215140754e62, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailTextureB:
         m_Texture: {fileID: 2800000, guid: c30167919a84e8e4f8f96989f5d0c3a0, type: 3}
@@ -58,10 +58,13 @@ Material:
     - _DetailTextureInfluenceA: 1
     - _DetailTextureInfluenceB: 1
     - _DisplacementStrength: 0.99
-    - _FurLayers: 36
+    - _FurLayers: 24
+    - _MaxTessDistance: 10
     - _ShellLenght: 5.09
-    - _ShellSize: 0.247
+    - _ShellSize: 0.12
     - _SmoothDepthScale: 0
+    - _Tess: 0
+    - _Tessellation: 1
     - _TextureInfluenceA: 1
     - _TextureInfluenceB: 0
     - _TotalHeight: 0.04
@@ -76,9 +79,9 @@ Material:
     - _smoothness: 0
     - _specular: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 1, b: 0.035294056, a: 1}
+    - _BaseColor: {r: 1, g: 0, b: 0.2004528, a: 1}
     - _ShellDirection: {r: 0, g: 0, b: 0, a: 0}
-    - _TopColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TopColor: {r: 0.048885584, g: 1, b: 0, a: 1}
     - _emission: {r: 0, g: 0, b: 0, a: 0}
     - _normalTS: {r: 0, g: 0, b: 0, a: 0}
     - _specular: {r: 255, g: 255, b: 255, a: 255}

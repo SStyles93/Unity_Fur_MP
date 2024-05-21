@@ -28,12 +28,12 @@ Material:
         m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _DetailTextureA:
-        m_Texture: {fileID: 2800000, guid: 59ad38410381d2b46bd890f655409d96, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 099a872d7ccf30141bb4215140754e62, type: 3}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _DetailTextureB:
         m_Texture: {fileID: 2800000, guid: d75a2c3e7e85373489473d9525e833af, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SmoothNoiseTexture:
         m_Texture: {fileID: 2800000, guid: 3f03054d452a62a46b13b6eb83a04a33, type: 3}
@@ -47,11 +47,14 @@ Material:
     m_Floats:
     - _DetailDepthScale: 0
     - _DisplacementStrength: 0.99
-    - _FurLayers: 71
-    - _ShellSize: 0.509
+    - _FurLayers: 24
+    - _MaxTessDistance: 10
+    - _ShellSize: 0.082
     - _SmoothDepthScale: 1
+    - _Tess: 0
+    - _Tessellation: 1
     - _TextureInfluenceA: 1
-    - _TextureInfluenceB: 0.921
+    - _TextureInfluenceB: 0
     - _TotalHeight: 0.25
     - _WindAmplitude: 0.001
     - _WindTimeMult: 0.001
@@ -61,7 +64,7 @@ Material:
     - _metallic: 0
     - _normalTS: 0
     - _occlusion: 0
-    - _smoothness: 0.224
+    - _smoothness: 0
     - _specular: 0
     m_Colors:
     - _BaseColor: {r: 0, g: 0.40754712, b: 0.010176182, a: 1}

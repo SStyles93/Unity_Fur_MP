@@ -1,12 +1,7 @@
-#ifndef FUR_LAYERS
-#define FUR_LAYERS
-
 // Include some helper functions
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Common.hlsl"
 
-// Change this to change the number of layers created by the geometry function
-#define FUR_LAYERS 24
 
 // The vertex function input
 struct Attributes {
@@ -29,6 +24,22 @@ struct GeometryOutput {
     float3 positionWS   : TEXCOORD1; // Position in world space
     float3 normalWS     : TEXCOORD2; // Normal vector in world space
     float4 positionCS   : SV_POSITION; // Position in clip space
+};
+
+// Tessellation data
+struct TessellationFactors
+{
+	float edge[3] : SV_TessFactor;
+	float inside : SV_InsideTessFactor;
+};
+
+// Extra vertex struct
+struct ControlPoint
+{
+	float4 vertex : INTERNALTESSPOS;
+	float2 uv : TEXCOORD0;
+	float4 color : COLOR;
+	float3 normal : NORMAL;
 };
 
 // Properties
@@ -61,6 +72,10 @@ half3 _emission;
 half _alpha;
 
 uint _FurLayers;
+
+// tessellation variables, add these to your shader properties
+float _Tess;
+float _MaxTessDistance;
 
 // Vertex functions
 VertexOutput Vertex(Attributes IN) {
@@ -97,7 +112,7 @@ void SetupVertex(in VertexOutput input, inout GeometryOutput output, float heigh
 }
 
 // We create FUR_LAYERS triangles which have 3 vertices each
-[maxvertexcount(3 * FUR_LAYERS)]
+[maxvertexcount(3 * 24)]
 void Geometry(triangle VertexOutput inputs[3], inout TriangleStream<GeometryOutput> outputStream) {
     // Initialize the output struct
     GeometryOutput output = (GeometryOutput)0;
@@ -201,5 +216,3 @@ half4 Fragment(GeometryOutput input) : SV_Target {
     
 #endif
 }
-
-#endif
