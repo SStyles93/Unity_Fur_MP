@@ -21,19 +21,6 @@
         _smoothness("Roughness", Range(0, 1)) = 0
         _metallic("Metalness", Range(0, 1)) = 0
         _emission("Emissive", Color) = (0, 0, 0, 0)
-
-        [Space]
-        _Tess("Tessellation", Range(0, 64)) = 0
-        _MaxTessDistance("Max Tessellation Distance", float) = 10
-
-        //_specular("Specular", vector) = (0, 0, 0, 0)
-        //_alpha("alpha", float) = 0
-        //_normalTS("normalTS", vector) = (0, 0, 0, 0)
-
-        //_specular("specular", vector) = (0, 0, 0, 0)
-        //_smoothness("smoothness", float) = 0
-        //_emission("emission", Color) = (0, 0, 0, 0) 
-        //_alpha("alpha", float) = 0
     }
 
     SubShader {

@@ -58,12 +58,6 @@ float _TextureInfluenceA;
 TEXTURE2D(_DetailTextureB); SAMPLER(sampler_DetailTextureB); float4 _DetailTextureB_ST;
 float _TextureInfluenceB;
 
-//float4 _specular;
-//float _smoothness; 
-//float3 _emission; 
-//float _alpha;
-//float3 _normalTS;
-
 half _metallic;
 half3 _specular;
 half _smoothness; 
@@ -73,9 +67,6 @@ half _alpha;
 
 uint _FurLayers;
 
-// tessellation variables, add these to your shader properties
-float _Tess;
-float _MaxTessDistance;
 
 // Vertex functions
 VertexOutput Vertex(Attributes IN) {
@@ -139,28 +130,6 @@ half4 Fragment(GeometryOutput input) : SV_Target {
     float2 uv = input.uv.xy;
     // Height percent is uv.z
     float height = input.uv.z;
-
-    //// Calculate wind
-    //// Get the wind noise texture uv by applying scale and offset and then adding a time offset
-    //float2 windUV = TRANSFORM_TEX(input.uv.xy, _WindNoiseTexture) + _Time.y * _WindTimeMult;
-    //// Sample the wind noise texture and remap to range from -1 to 1
-    //float2 windNoise = SAMPLE_TEXTURE2D(_WindNoiseTexture, sampler_WindNoiseTexture, windUV).xy * 2 - 1;
-    //// Offset the grass UV by the wind. Higher layers are affected more
-    //float2 uv = input.uv.xy + windNoise * (_WindAmplitude * height);
-    
-    //float k = pow(_Curvature, height);
-    //uv.x += _ShellDirection.x * (k * _DisplacementStrength);
-    //uv.y += _ShellDirection.y * (k * _DisplacementStrength);
-
-    //// Offset the grass UV by the _ShellDirection. Higher layers are affected more
-    //float2 uv = input.uv.xy;
-    //uv.y += (_ShellDirection.y * (_Curvature/10 * height));
-    //uv.x += (_ShellDirection.x * (_Curvature/10 * height));
-
-    //float2 uv = input.uv.xy;
-    //uv.y += _ShellDirection.y * (_Curvature/10 * height);
-    //uv.x += _ShellDirection.x * (_Curvature/10 * height);
-    
 
     // Sample the two noise textures, applying their scale and offset
     float detailNoiseA = SAMPLE_TEXTURE2D(_DetailTextureA, sampler_DetailTextureA, TRANSFORM_TEX(uv, _DetailTextureA)).r;

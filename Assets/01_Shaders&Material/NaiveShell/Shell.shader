@@ -1,4 +1,4 @@
-Shader "Custom/Water" {
+Shader "Custom/Fur" {
 	SubShader {
 		Tags {
 			"RenderType" = "Transparent"
@@ -126,7 +126,6 @@ Shader "Custom/Water" {
 				
 				float ndotl = clamp(dot(IN.normal, _MainLightPosition),0,1) * 0.5f + 0.5f;
 
-				// Valve's half lambert squares the ndotl output
 				ndotl = ndotl * ndotl;
 
 				float ambientOcclusion = pow(h, _Attenuation);

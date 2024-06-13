@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/NaiveShell.unity
     guid: 52fd21f48344aee4989ccaeaba6c431c
+  - enabled: 1
+    path: Assets/00_Scenes/HLSLGeom.unity
+    guid: 854cd6a8339da1b4192e6663e39da533
+  - enabled: 1
+    path: Assets/00_Scenes/HLSLGeom 1.unity
+    guid: 1596cd7b5432eb34e813658ade7deb7b
+  - enabled: 1
+    path: Assets/00_Scenes/HLSL_ComplexeScene.unity
+    guid: 70dc8c9b90439604cbd6b741f36d7548
+  - enabled: 1
+    path: Assets/00_Scenes/HLSL_ComplexeObject.unity
+    guid: 5670c5d732d322c49ba051b92811da8b
   m_configObjects: {}

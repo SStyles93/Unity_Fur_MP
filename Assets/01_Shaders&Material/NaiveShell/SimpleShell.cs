@@ -10,8 +10,6 @@ public class SimpleShell : MonoBehaviour {
 
     public bool updateStatics = true;
 
-    // These variables and what they do are explained on the shader code side of things
-    // You can see below (line 70) which shader uniforms match up with these variables
     [Range(1, 256)] public int shellCount = 16;
     [Range(0.0f, 1.0f)] public float shellLength = 0.15f;
     [Range(0.01f, 3.0f)] public float distanceAttenuation = 1.0f;
@@ -45,8 +43,6 @@ public class SimpleShell : MonoBehaviour {
             shells[i].GetComponent<MeshRenderer>().material = shellMaterial;
             shells[i].transform.SetParent(this.transform, false);
 
-            // In order to tell the GPU what its uniform variable values should be, we use these "Set" functions which will set the
-            // values over on the GPU. 
             shells[i].GetComponent<MeshRenderer>().material.SetInt("_ShellCount", shellCount);
             shells[i].GetComponent<MeshRenderer>().material.SetInt("_ShellIndex", i);
             shells[i].GetComponent<MeshRenderer>().material.SetFloat("_ShellLength", shellLength);
@@ -60,7 +56,6 @@ public class SimpleShell : MonoBehaviour {
             shells[i].GetComponent<MeshRenderer>().material.SetFloat("_NoiseMin", noiseMin);
             shells[i].GetComponent<MeshRenderer>().material.SetFloat("_NoiseMax", noiseMax);
             shells[i].GetComponent<MeshRenderer>().material.SetVector("_ShellColor", shellColor);
-            //shells[i].transform.localScale += new Vector3(0.0005f * i, 0.0005f * i, 0.0005f * i);
         }
     }
 

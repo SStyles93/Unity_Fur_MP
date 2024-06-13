@@ -1,4 +1,4 @@
-Shader "Custom/Water" {
+Shader "Custom/Fur_Original" {
 	SubShader {
 		Tags {
 			"LightMode" = "ForwardBase"
