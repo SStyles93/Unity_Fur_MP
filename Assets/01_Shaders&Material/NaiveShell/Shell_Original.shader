@@ -44,7 +44,7 @@ Shader "Custom/Fur_Original" {
 
 
 			float hash(uint n) {
-				// integer hash copied from Hugo Elias
+				// Hash from Hugo Elias
 				n = (n << 13U) ^ n;
 				n = n * (n * n * 15731U + 0x789221U) + 0x1376312589U;
 				return float(n & uint(0x7fffffffU)) / float(0x7fffffff);
@@ -106,8 +106,6 @@ Shader "Custom/Fur_Original" {
 
                 return float4(_ShellColor * ndotl * ambientOcclusion, 1.0);
 			}
-
-			// This indicates the end of the CG code block
 			ENDCG
 		}
 	}

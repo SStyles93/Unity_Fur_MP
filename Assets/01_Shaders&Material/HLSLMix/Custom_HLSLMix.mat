@@ -47,7 +47,7 @@ Material:
     m_Floats:
     - _AlphaCutout: 0.324
     - _Density: 10
-    - _DirectionThreshold: 0.42
+    - _DirectionThreshold: 0.727
     - _DisplacementStrength: 0.506
     - _DrawOrigPolygon: 0
     - _FaceNormalFactor: 0.5

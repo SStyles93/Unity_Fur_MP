@@ -99,22 +99,20 @@ Shader "Custom/Fur" {
 			half4 frag(Varyings IN) : SV_Target 
 			{
 				float2 newUV = IN.uv * _Density;
-
 				float2 localUV = frac(newUV) * 2 - 1;
-				
 				float localDistanceFromCenter = length(localUV);
-
-                uint2 tid = newUV;
+                
+				uint2 tid = newUV;
 				uint seed = tid.x + 100 * tid.y + 100 * 10;
 
 				// instead of (float)_ShellIndex && (float)_ShellCount
                 float shellIndex = _ShellIndex;
                 float shellCount = _ShellCount;
 
-				//Lerp between min and max noise according to rng
+				//Lerp between min and max noise according to random generator function
                 float rand = lerp(_NoiseMin, _NoiseMax, hash(seed));
 
-				// This is the normalized shell height as described above in the vertex shader
+				// This is the normalized shell height as in the vertex shader
                 float h = shellIndex / shellCount;
 
 				int outsideThickness = (localDistanceFromCenter) > (_Thickness * (rand - h));

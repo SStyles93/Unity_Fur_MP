@@ -2,44 +2,24 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Common.hlsl"
 
-
-// The vertex function input
 struct Attributes {
-    float4 positionOS   : POSITION; // Vertex position in object space
-    float3 normalOS     : NORMAL; // Vertex normal vector in object space
-    float4 tangentOS    : TANGENT; // Vertex tangent vector in object space
-    float2 uv           : TEXCOORD0; // Vertex uv
+    float4 positionOS   : POSITION; 
+    float3 normalOS     : NORMAL; 
+    float4 tangentOS    : TANGENT; 
+    float2 uv           : TEXCOORD0;
 };
 
-// Vertex function output and geometry function input
 struct VertexOutput {
-    float3 positionWS   : TEXCOORD0; // Position in world space
-    float3 normalWS     : TEXCOORD1; // Normal vector in world space
-    float2 uv           : TEXCOORD2; // UV, no scaling applied
+    float3 positionWS   : TEXCOORD0;
+    float3 normalWS     : TEXCOORD1;
+    float2 uv           : TEXCOORD2;
 };
 
-// Geometry function output and fragment function input
 struct GeometryOutput {
-    float3 uv           : TEXCOORD0; // UV, no scaling applied, plus the layer height in the z-coord
-    float3 positionWS   : TEXCOORD1; // Position in world space
-    float3 normalWS     : TEXCOORD2; // Normal vector in world space
-    float4 positionCS   : SV_POSITION; // Position in clip space
-};
-
-// Tessellation data
-struct TessellationFactors
-{
-	float edge[3] : SV_TessFactor;
-	float inside : SV_InsideTessFactor;
-};
-
-// Extra vertex struct
-struct ControlPoint
-{
-	float4 vertex : INTERNALTESSPOS;
-	float2 uv : TEXCOORD0;
-	float4 color : COLOR;
-	float3 normal : NORMAL;
+    float3 uv           : TEXCOORD0;
+    float3 positionWS   : TEXCOORD1;
+    float3 normalWS     : TEXCOORD2;
+    float4 positionCS   : SV_POSITION;
 };
 
 // Properties
@@ -69,7 +49,8 @@ uint _FurLayers;
 
 
 // Vertex functions
-VertexOutput Vertex(Attributes IN) {
+VertexOutput Vertex(Attributes IN) 
+{
     // Initialize the output struct
     VertexOutput output = (VertexOutput)0;
 
@@ -87,9 +68,10 @@ VertexOutput Vertex(Attributes IN) {
 // Geometry functions
 
 // This function sets values in output after calculating position based on height
-void SetupVertex(in VertexOutput input, inout GeometryOutput output, float height) {
+void SetupVertex(in VertexOutput input, inout GeometryOutput output, float height) 
+{
 
-    // Extrude the position outwards along the normal based on the passed in height
+    // Extrude the position from the normal based on the height
     float3 positionWS = input.positionWS + input.normalWS * (height * _ShellSize);
     
     //Move shell positions according to the _ShellDirection higher layers are more impacted by the height
@@ -102,9 +84,10 @@ void SetupVertex(in VertexOutput input, inout GeometryOutput output, float heigh
     output.positionCS = CalculatePositionCSWithShadowCasterLogic(positionWS, input.normalWS);
 }
 
-// We create FUR_LAYERS triangles which have 3 vertices each
+// 3 vertices per trianlge * max number of layers allowed by Unity
 [maxvertexcount(3 * 24)]
-void Geometry(triangle VertexOutput inputs[3], inout TriangleStream<GeometryOutput> outputStream) {
+void Geometry(triangle VertexOutput inputs[3], inout TriangleStream<GeometryOutput> outputStream) 
+{
     // Initialize the output struct
     GeometryOutput output = (GeometryOutput)0;
     
@@ -125,10 +108,10 @@ void Geometry(triangle VertexOutput inputs[3], inout TriangleStream<GeometryOutp
 
 // Fragment functions
 
-half4 Fragment(GeometryOutput input) : SV_Target {
+half4 Fragment(GeometryOutput input) : SV_Target 
+{
 
     float2 uv = input.uv.xy;
-    // Height percent is uv.z
     float height = input.uv.z;
 
     // Sample the two noise textures, applying their scale and offset
@@ -138,7 +121,6 @@ half4 Fragment(GeometryOutput input) : SV_Target {
     detailNoiseA = 1 - (1 - detailNoiseA) * _TextureInfluenceA;
     detailNoiseB = 1 - (1 - detailNoiseB) * _TextureInfluenceB;
     // If detailNoise * smoothNoise is less than height, this pixel will be discarded by the renderer
-    // I.E. this pixel will not render. The fragment function returns as well
     clip(detailNoiseA * detailNoiseB - height);
 
     // If the code reaches this far, this pixel should render
@@ -155,20 +137,7 @@ half4 Fragment(GeometryOutput input) : SV_Target {
     lightingInput.shadowCoord = CalculateShadowCoord(input.positionWS, input.positionCS); // Calculate the shadow map coord
 
     // Lerp between the two grass colors based on layer height
-    float3 _diffuseColor = lerp(_BaseColor, _TopColor, height).rgb;
-
-    // The URP simple lit algorithm, 
-    //InputData, 
-    //half3 diffuse, 
-    //half4 specular, 
-    //float smoothness, 
-    //half3 emission, 
-    //float alpha, 
-    //half3 normalTS
-    //return UniversalFragmentBlinnPhong(lightingInput, _diffuseColor, _specular, _smoothness, _emission, _alpha, _normalTS);
-    
-    //return UniversalFragmentBlinnPhong(lightingInput, _diffuseColor, 1,1,1,1,1);
-    //return UniversalFragmentBlinnPhong(lightingInput, _diffuseColor, 1,1,0,0,1);
+    float3 _diffuseColor = lerp(_BaseColor, _TopColor, height).rgb;   
     
     //InputData inputData, 
     //half3 albedo, 
@@ -180,8 +149,6 @@ half4 Fragment(GeometryOutput input) : SV_Target {
     //half alpha
     //return UniversalFragmentPBR(lightingInput, _diffuseColor, _metallic, _specular, _smoothness, _occlusion, _emission, _alpha);
     return UniversalFragmentPBR(lightingInput, _diffuseColor, _metallic, _specular, _smoothness, _occlusion, _emission, 1);
-    
-    //return UniversalFragmentPBR(lightingInput, _diffuseColor, 0, 1, 1, 1, 0, 1);
-    
+     
 #endif
 }

@@ -75,6 +75,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\LitTessellation.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Unlit.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLComplexe\FurComplex.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\Unlit.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLGeom\Fur.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
@@ -87,6 +88,7 @@
     <None Include="Assets\01_Shaders&amp;Material\TESTSHADERS\TEST.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Fin\LitMultiMat.shader" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLMulitMatMix\Shell\ShellMultiMat.shader" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLComplexe\HLSLComplex.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -118,6 +120,7 @@
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Shadow.hlsl" />
+    <None Include="Assets\01_Shaders&amp;Material\HLSLComplexe\Common.hlsl" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Fin\Lit.shader" />
     <None Include="Assets\01_Shaders&amp;Material\HLSLMix\Shell\HLSLGeom1.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />

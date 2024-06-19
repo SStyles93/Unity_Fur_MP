@@ -1,12 +1,12 @@
 ﻿Shader "Custom/HLSLGeom" {
-    Properties {
+    Properties 
+    {
         
         [Header(Shell Property)][Space]
         [IntRange] _FurLayers("NumberOfShells", Range(2, 24)) = 24
         _ShellSize("Shell Size", range(0.01, 1.0)) = 1.0
         _ShellDirection("Shell Direction", vector) = (0, 0, 0, 0)
         _DisplacementStrength("Displacement Strenght", range(0.0, 0.99)) = 0.5
-        //_Curvature("Curvature", float) = 1
         
         [Header(Shell Color)][Space]
         _BaseColor("Base color", Color) = (0, 0.5, 0, 1) // Color of the lowest layer
@@ -26,7 +26,7 @@
     SubShader {
 
         
-        // UniversalPipeline needed to have this render in URP
+        // URP prerequisites
         Tags{"RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "IgnoreProjector" = "True"}
 
         // Forward Lit Pass
