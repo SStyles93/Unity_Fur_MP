@@ -97,7 +97,7 @@ Material:
     - _Occlusion: 0
     - _OcclusionValue: 0
     - _ShellLenght: 5.09
-    - _ShellSize: 0.021
+    - _ShellSize: 0.026
     - _SmoothDepthScale: 0
     - _Smoothness: 0
     - _SmoothnessValue: 0
@@ -121,7 +121,7 @@ Material:
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionTint: {r: 0, g: 0, b: 0, a: 1}
     - _ShellDirection: {r: 0, g: 1, b: 0, a: 0}
-    - _TintColor: {r: 0.80754715, g: 0.80754715, b: 0.80754715, a: 1}
+    - _TintColor: {r: 0.7471698, g: 0.7471698, b: 0.7471698, a: 1}
     - _TopColor: {r: 1, g: 1, b: 1, a: 1}
     - _emission: {r: 0, g: 0, b: 0, a: 0}
     - _normalTS: {r: 0, g: 0, b: 0, a: 0}

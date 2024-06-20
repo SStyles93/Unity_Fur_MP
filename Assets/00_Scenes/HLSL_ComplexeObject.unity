@@ -132,6 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 201820549}
+  - component: {fileID: 201820551}
+  - component: {fileID: 201820550}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Untagged
@@ -156,6 +158,53 @@ Transform:
   - {fileID: 961739753}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &201820550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201820548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513efac435c62944c9d3a93d720e46b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  shellRenderers:
+  - {fileID: 5348191242891541648}
+  - {fileID: 6226023285079130837}
+--- !u!114 &201820551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201820548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f335bf918f9a3b84b9c535be2102e3b0,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,10 +578,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1572766079431296675, guid: 9d933896c2365a44eaa8c94659799820,
+        type: 3}
+      propertyPath: m_text
+      value: Current Scene
+      objectReference: {fileID: 0}
     - target: {fileID: 1634191545600628776, guid: 9d933896c2365a44eaa8c94659799820,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039035584181640517, guid: 9d933896c2365a44eaa8c94659799820,
+        type: 3}
+      propertyPath: m_text
+      value: Next Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057376985853182809, guid: 9d933896c2365a44eaa8c94659799820,
+        type: 3}
+      propertyPath: m_text
+      value: Previous Scene
       objectReference: {fileID: 0}
     - target: {fileID: 6890247976299635630, guid: 9d933896c2365a44eaa8c94659799820,
         type: 3}

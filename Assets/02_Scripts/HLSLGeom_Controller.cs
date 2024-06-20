@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class HLSLGeom_Controler : MonoBehaviour
+public class HLSLGeom_Controller : MonoBehaviour
 {
     private Vector3 displacementDirection = new Vector3(0, 0, 0);
 
@@ -14,7 +14,7 @@ public class HLSLGeom_Controler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shellMaterial = GetComponent<MeshRenderer>().material;
+        shellMaterial = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame

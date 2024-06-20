@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class scenemanager : MonoBehaviour
+public class FurSceneManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text m_PreviousSceneText;
     [SerializeField] private TMP_Text m_CurrentSceneText;
